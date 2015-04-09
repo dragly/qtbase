@@ -43,8 +43,12 @@ SOURCES += thread/qatomic.cpp \
            thread/qthreadpool.cpp \
            thread/qthreadstorage.cpp
 
-unix:SOURCES += thread/qthread_unix.cpp \
-                         thread/qwaitcondition_unix.cpp
+#unix:SOURCES += thread/qthread_unix.cpp \
+#                         thread/qwaitcondition_unix.cpp
+
+unix:SOURCES += thread/qthread_emscripten.cpp \
+                thread/qwaitcondition_emscripten.cpp \
+                thread/qmutex_emscripten.cpp
 
 win32:SOURCES += thread/qmutex_win.cpp \
                  thread/qthread_win.cpp \
@@ -59,13 +63,12 @@ integrity:SOURCES += thread/qmutex_unix.cpp \
                 thread/qthread_unix.cpp \
 		thread/qwaitcondition_unix.cpp
 
-unix: {
-    mac {
-        SOURCES += thread/qmutex_mac.cpp
-    } else:linux-*:!linux-lsb-* {
-        SOURCES += thread/qmutex_linux.cpp
-    } else {
-        SOURCES += thread/qmutex_unix.cpp
-    }
-}
-
+#unix: {
+#    mac {
+#        SOURCES += thread/qmutex_mac.cpp
+#    } else:linux-*:!linux-lsb-* {
+#        SOURCES += thread/qmutex_linux.cpp
+#    } else {
+#        SOURCES += thread/qmutex_unix.cpp
+#    }
+#}

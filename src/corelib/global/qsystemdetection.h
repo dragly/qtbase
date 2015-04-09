@@ -170,6 +170,8 @@
 #  define Q_OS_INTEGRITY
 #elif defined(VXWORKS) /* there is no "real" VxWorks define - this has to be set in the mkspec! */
 #  define Q_OS_VXWORKS
+#elif defined(__EMSCRIPTEN__)
+#  define Q_OS_EMSCRIPTEN
 #elif defined(__HAIKU__)
 #  define Q_OS_HAIKU
 #elif defined(__MAKEDEPEND__)
