@@ -128,13 +128,15 @@ unix|integrity {
     SOURCES += \
             kernel/qcore_unix.cpp \
             kernel/qcrashhandler.cpp \
-            kernel/qeventdispatcher_unix.cpp \
+            #kernel/qeventdispatcher_unix.cpp \
+            kernel/qeventdispatcher_emscripten.cpp \
             kernel/qtimerinfo_unix.cpp
 
     HEADERS += \
             kernel/qcore_unix_p.h \
             kernel/qcrashhandler_p.h \
-            kernel/qeventdispatcher_unix_p.h \
+            #kernel/qeventdispatcher_unix_p.h \
+            kernel/qeventdispatcher_emscripten_p.h \
             kernel/qtimerinfo_unix_p.h
 
     contains(QT_CONFIG, glib) {
