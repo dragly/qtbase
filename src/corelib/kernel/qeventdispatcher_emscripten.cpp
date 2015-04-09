@@ -139,7 +139,7 @@ QEventDispatcherUNIXPrivate::QEventDispatcherUNIXPrivate()
 //         qFatal("QEventDispatcherUNIXPrivate(): Can not continue without a thread pipe");
 //
 //     sn_highest = -1;
-    m_instance = this;
+    // m_instance = this;
 }
 
 QEventDispatcherUNIXPrivate::~QEventDispatcherUNIXPrivate()
