@@ -55,6 +55,9 @@ QEGLPbuffer::QEGLPbuffer(EGLDisplay display, const QSurfaceFormat &format, QOffs
     , m_display(display)
     , m_pbuffer(EGL_NO_SURFACE)
 {
+#ifdef __EMSCRIPTEN__
+    return;
+#endif
     if (q_hasEglExtension(display, "EGL_KHR_surfaceless_context"))
         return;
 

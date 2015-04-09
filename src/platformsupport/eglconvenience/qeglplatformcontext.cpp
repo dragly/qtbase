@@ -282,8 +282,10 @@ void QEGLPlatformContext::updateFormatFromGL()
     // avoid creating an extra pbuffer surface which is apparently troublesome with some
     // drivers (Mesa) when certain attributes are present (multisampling).
     EGLSurface tempSurface = EGL_NO_SURFACE;
+#ifndef __EMSCRIPTEN __
     if (!q_hasEglExtension(m_eglDisplay, "EGL_KHR_surfaceless_context"))
         tempSurface = createTemporaryOffscreenSurface();
+#endif
 
     if (eglMakeCurrent(m_eglDisplay, tempSurface, tempSurface, m_eglContext)) {
         if (m_format.renderableType() == QSurfaceFormat::OpenGL
