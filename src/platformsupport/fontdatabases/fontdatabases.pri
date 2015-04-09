@@ -1,5 +1,5 @@
 !win32|contains(QT_CONFIG, freetype):!mac {
-    include($$PWD/basic/basic.pri)
+    #include($$PWD/basic/basic.pri)
 }
 
 unix:!mac {
@@ -13,4 +13,3 @@ unix:!mac {
 mac {
     include($$PWD/mac/coretext.pri)
 }
-
