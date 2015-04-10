@@ -258,7 +258,8 @@ EGLSurface QEGLPlatformContext::createTemporaryOffscreenSurface()
     // PBUFFER_BIT set.
     EGLConfig config = q_configFromGLFormat(m_eglDisplay, m_format, false, EGL_PBUFFER_BIT);
 
-    return eglCreatePbufferSurface(m_eglDisplay, config, pbufferAttributes);
+    // return eglCreatePbufferSurface(m_eglDisplay, config, pbufferAttributes);
+    return EGL_NO_SURFACE;
 }
 
 void QEGLPlatformContext::destroyTemporaryOffscreenSurface(EGLSurface surface)
@@ -283,8 +284,8 @@ void QEGLPlatformContext::updateFormatFromGL()
     // drivers (Mesa) when certain attributes are present (multisampling).
     EGLSurface tempSurface = EGL_NO_SURFACE;
 #ifndef __EMSCRIPTEN __
-    if (!q_hasEglExtension(m_eglDisplay, "EGL_KHR_surfaceless_context"))
-        tempSurface = createTemporaryOffscreenSurface();
+    // if (!q_hasEglExtension(m_eglDisplay, "EGL_KHR_surfaceless_context"))
+        // tempSurface = createTemporaryOffscreenSurface();
 #endif
 
     if (eglMakeCurrent(m_eglDisplay, tempSurface, tempSurface, m_eglContext)) {
@@ -327,8 +328,8 @@ void QEGLPlatformContext::updateFormatFromGL()
     } else {
         qWarning("QEGLPlatformContext: Failed to make temporary surface current, format not updated");
     }
-    if (tempSurface != EGL_NO_SURFACE)
-        destroyTemporaryOffscreenSurface(tempSurface);
+    // if (tempSurface != EGL_NO_SURFACE)
+        // destroyTemporaryOffscreenSurface(tempSurface);
 #endif // QT_NO_OPENGL
 }
 
